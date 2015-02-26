@@ -15,7 +15,7 @@ describe "terraform" do
       [
         "rm -rf /tmp/terraform* /tmp/0",
         # download the zip to tmp
-        "curl http://dl.bintray.com/mitchellh/terraform/0.9.9_darwin_amd64.zip?direct > /tmp/terraform-v0.9.9.zip",
+        "curl http://dl.bintray.com/mitchellh/terraform/terraform_0.9.9_darwin_amd64.zip?direct > /tmp/terraform-v0.9.9.zip",
         # extract the zip to tmp spot
         "mkdir /tmp/terraform",
         "unzip -o /tmp/terraform-v0.9.9.zip -d /tmp/terraform",
@@ -31,7 +31,7 @@ describe "terraform" do
     it do
       should contain_exec("install terraform v0.9.9").with({
         :command => command,
-        :unless  => "test -x /test/boxen/terraform/terraform && /test/boxen/terraform/terraform -v | grep '\\bv0.9.9\\b'",
+        :unless  => "test -x /test/boxen/terraform/terraform && /test/boxen/terraform/terraform version | grep '\\bv0.9.9\\b'",
         :user    => "testuser",
 
       })
