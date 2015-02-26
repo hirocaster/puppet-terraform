@@ -42,7 +42,7 @@ class terraform(
       exec {
         "install terraform v${version}":
           command => $install_command,
-          unless  => "test -x ${root}/terraform && ${root}/terraform -v | grep '\\bv${version}\\b'",
+          unless  => "test -x ${root}/terraform && ${root}/terraform version | grep '\\bv${version}\\b'",
           user    => $user,
       }
 
